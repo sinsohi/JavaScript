@@ -12,8 +12,20 @@
     />
 
     <link rel="stylesheet" href="main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <button class="btn btn-danger" id="close">닫기</button>
+      </div>
+    </div>
+
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
@@ -29,8 +41,23 @@
       <li class="list-group-item">A fourth item</li>
       <li class="list-group-item">And a fifth one</li>
     </ul>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+
+    <button id="test-btn">버튼</button>
+    <button id="login">모달창 버튼</button>
 
     <script>
+      $("#login").on("click", function () {
+        $(".black-bg").addClass("show-modal");
+      });
+      $("#test-btn").on("click", function () {
+        $(".hello").slideToggle();
+      });
+      $(".hello").html("바보");
+      $(".hello").css("color", "red");
+
       document.querySelector(".list-group");
       document
         .getElementsByClassName("navbar-toggler")[0]
