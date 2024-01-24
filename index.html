@@ -7,9 +7,30 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <div class="alert-box" id="alert">알림창임</div>
-    <button onclick="document.getElementById('alert').style.display='block';">
-      버튼
+    <div class="alert-box" id="alert">
+      <p class="title">알림창임</p>
+      <button class="closing-btn" id="close">닫기</button>
+    </div>
+    <button onclick="Alert('block');">버튼</button>
+    <button onclick="Alert('block'); changeAlert('id 입력하셈');">id</button>
+    <button onclick="Alert('block'); changeAlert('pw 입력하셈');">
+      password
     </button>
+
+    <script>
+      document
+        .getElementById("close")
+        .addEventListener("mouseover", function () {
+          document.getElementById("alert").style.display = none;
+        });
+
+      function Alert(x) {
+        document.getElementById("alert").style.display = x;
+      }
+
+      function changeAlert(x) {
+        document.getElementById("alert").innerHTML = x;
+      }
+    </script>
   </body>
 </html>
