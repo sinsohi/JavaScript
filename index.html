@@ -22,7 +22,19 @@
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
-        <button class="btn btn-danger" id="close">닫기</button>
+
+        <form action="success.html">
+          <div class="my-3">
+            <input id="email" type="text" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" />
+          </div>
+          <button id="submit" type="submit" class="btn btn-primary">
+            전송
+          </button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
       </div>
     </div>
 
@@ -41,14 +53,16 @@
       <li class="list-group-item">A fourth item</li>
       <li class="list-group-item">And a fifth one</li>
     </ul>
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
 
-    <button id="test-btn">버튼</button>
     <button id="login">모달창 버튼</button>
 
     <script>
+      $("form").on("submit", function () {
+        if (document.getElementById("email").value == "") {
+          alert("아이디 입력하쇼");
+        }
+      });
+
       $("#login").on("click", function () {
         $(".black-bg").addClass("show-modal");
       });
@@ -64,7 +78,7 @@
         .addEventListener("click", function () {
           document
             .getElementsByClassName("list-group")[0]
-            .classList.toggle("show");
+            .classList.add("show");
         });
     </script>
   </body>
