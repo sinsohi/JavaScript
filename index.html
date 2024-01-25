@@ -24,7 +24,7 @@
       <div class="white-bg">
         <h4>로그인하세요</h4>
 
-        <form action="success.html">
+        <form action="success.html" id="login-modal">
           <div class="my-3">
             <input id="email" type="text" class="form-control" />
           </div>
@@ -68,7 +68,30 @@
     <input type="text" id="answer" />
     <button id="send-answer">제출</button>
 
+    <div class="alert alert-danger">
+      <span id="sec">5</span>초 이내 구매시 사은품 증정!
+    </div>
+
     <script>
+      // 타이머
+      var cnt = 5;
+      var 타이머 = setInterval(function () {
+        if (cnt <= 0) {
+          $(".alert").hide();
+        }
+        if (cnt >= 1) {
+          cnt--;
+          document.querySelector("#sec").innerHTML = cnt;
+          $("#sec").html = cnt;
+        }
+      }, 1000);
+      setTimeout(setCount(), 1000);
+
+      function setCount() {
+        console.log("안녕녕녕");
+      }
+
+      // 태조 이성계 문제
       var count = 0;
       document
         .querySelector("#send-answer")
@@ -78,8 +101,13 @@
             alert("성공");
           } else {
             count++;
+
             if (count >= 3) {
               alert("멍청아");
+              document.querySelector("#answer").value = ""; // 오답 없애기
+            } else {
+              alert("땡ㅋ");
+              document.querySelector("#answer").value = "";
             }
           }
         });
@@ -88,17 +116,28 @@
         console.log("안녕"); // 유저가 input에 입력한 값이 변할 때 실행됨
       });
 
-      // 아이디, 패스워드 입력 조건
+      // 아이디, 패스워드 입력 조건 (공백검사, 이메일형식 검사)
       $("form").on("submit", function (e) {
-        if (document.getElementById("email").value == "") {
+        var userEmail = document.getElementById("email").value;
+        if (userEmail == "") {
           alert("아이디를 입력하시오");
-          e.preventDefault();
+          e.preventDefault(); // 폼 전송 막기
         }
         if (document.getElementById("password").value == "") {
           alert("비밀번호를 입력하시오");
           e.preventDefault();
         } else if (document.getElementById("password").value.length < 6) {
           alert("비밀번호를 6자 이상 입력하시오.");
+          e.preventDefault();
+        }
+
+        // 이메일 형식 검사
+        if (!/^\S+@\S+\.\S+$/.test(userEmail)) {
+          alert("이메일 형식이 아닙니다.");
+          e.preventDefault();
+        }
+        if (!/[A-Z]/.test(userEmail)) {
+          alert("비밀번호에 대문자를 포함하십시오");
           e.preventDefault();
         }
       });
@@ -167,6 +206,11 @@
       var refill2 = (refill * 2) / 3;
       var max_bevarage = first + refill + refill2;
       console.log(max_bevarage);
+
+      //로그인 모달창 닫기 버튼
+      document.getElementById("close").addEventListener("click", function () {
+        $(".black-bg").removeClass("show-modal");
+      });
     </script>
   </body>
 </html>
