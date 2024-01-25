@@ -63,7 +63,27 @@
 
     <button id="login">모달창 버튼</button>
 
+    <!-- 15강 숙제 Q5 -->
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer" />
+    <button id="send-answer">제출</button>
+
     <script>
+      var count = 0;
+      document
+        .querySelector("#send-answer")
+        .addEventListener("click", function () {
+          console.log(document.querySelector("#answer").value);
+          if (document.querySelector("#answer").value == "1335") {
+            alert("성공");
+          } else {
+            count++;
+            if (count >= 3) {
+              alert("멍청아");
+            }
+          }
+        });
+
       document.getElementById("email").addEventListener("change", function () {
         console.log("안녕"); // 유저가 input에 입력한 값이 변할 때 실행됨
       });
@@ -125,6 +145,28 @@
       // var let const 차이
       let name = "신소희"; // let -> 재선언X, 재할당O
       const age2 = 21; // const -> 재선언O, 재할당X -> 상수 저장하기 적격
+
+      // 15강 숙제 Q1
+      var age = 21;
+      const place = "청주";
+
+      // 15강 숙제 Q3
+      var 예금액 = 60000;
+      var 미래예금액 = 0;
+
+      if (예금액 < 50000) {
+        미래예금액 = 예금액 * 1.15 * 1.15;
+      } else if (예금액 >= 50000) {
+        미래예금액 = 예금액 * 1.2 * 1.2;
+      }
+      console.log(미래예금액);
+
+      // 15강 숙제 Q4
+      var first = 360;
+      var refill = (first * 2) / 3;
+      var refill2 = (refill * 2) / 3;
+      var max_bevarage = first + refill + refill2;
+      console.log(max_bevarage);
     </script>
   </body>
 </html>
