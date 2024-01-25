@@ -40,9 +40,10 @@ body {
 
 #login {
   margin: 15px;
+  margin-top: 100px;
 }
 
-.dart {
+.dark {
   background-color: black;
   color: white;
 }
@@ -60,4 +61,14 @@ body {
 
 .slide-box img {
   width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.navbar-brand {
+  font-size: 30px;
 }

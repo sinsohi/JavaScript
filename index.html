@@ -19,7 +19,29 @@
     ></script>
   </head>
 
-  <body class="dart">
+  <body class="dark">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">Navbar</span>
+        <!-- 다크모드 버튼 -->
+        <span id="dark-btn" class="badge bg-dark ms-auto mx-3"
+          >Dark<span> 🔄</span></span
+        >
+
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        // console.log(window.scrollY);
+        <!-- window.scrollBy(0, 100); -->
+        // window.scrollTo(0, 500); // 강제로 스크롤 하기
+      });
+    </script>
+
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -39,19 +61,6 @@
       </div>
     </div>
 
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand">Navbar</span>
-        <!-- 다크모드 버튼 -->
-        <span id="dark-btn" class="badge bg-dark ms-auto mx-3"
-          >Dark<span> 🔄</span></span
-        >
-
-        <button class="navbar-toggler" type="button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
     <!-- navbar list updown -->
     <ul class="list-group">
       <li class="list-group-item">An item</li>
@@ -63,11 +72,51 @@
 
     <button id="login">로그인 버튼</button>
 
-    <!-- 15강 숙제 Q5 - 태조 이성계 문제-->
-    <div style="margin: 20px">
-      <p>태조 이성계가 태어난 년도는?</p>
-      <input type="text" id="answer" />
-      <button id="send-answer">제출</button>
+    <div style="display: flex">
+      <!-- 15강 숙제 Q5 - 태조 이성계 문제-->
+      <div style="margin: 20px">
+        <p>태조 이성계가 태어난 년도는?</p>
+        <input type="text" id="answer" />
+        <button id="send-answer">제출</button>
+      </div>
+
+      <!-- 박스 끝까지 스크롤시 알림띄우기 -->
+      <div
+        class="lorem"
+        style="
+          width: 200px;
+          height: 100px;
+          overflow-y: scroll;
+          margin-left: 50px;
+        "
+      >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas
+        voluptatum minus praesentium fugit debitis at, laborum ipsa itaque
+        placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae
+        consectetur praesentium exercitationem.
+      </div>
+
+      <script>
+        window.addEventListener("scroll", function () {
+          if (window.scrollY >= 100) {
+            // console.log(window.scrollY);
+            document.querySelector(".navbar-brand").style.fontSize = "16px";
+          }
+          if (window.scrollY < 100) {
+            document.querySelector(".navbar-brand").style.fontSize = "32px";
+          }
+        });
+        // div의 스크롤바 내린 양 + 눈에보이는 div 높이 == div 실제 높이
+        $(".lorem").on("scroll", function () {
+          var 스크롤양 = document.querySelector(".lorem").scrollTop;
+          var div실제높이 = document.querySelector(".lorem").scrollHeight;
+          var 눈에보이는div높이 = document.querySelector(".lorem").clientHeight;
+          console.log(스크롤양, div실제높이, 눈에보이는div높이);
+          if (스크롤양 + 눈에보이는div높이 >= div실제높이) {
+            alert("약관을 다 읽으셨군요!");
+          }
+        });
+      </script>
     </div>
 
     <div class="alert alert-danger">
@@ -114,6 +163,7 @@
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
     <button class="next-btn">다음</button>
+    <div style="height: 1000px"></div>
 
     <script>
       var 지금사진 = 1; // 현재 내가 보고 있는 사진
@@ -154,7 +204,7 @@
       var cnt = 5;
       var 타이머 = setInterval(function () {
         if (cnt <= 0) {
-          $(".alert").hide();
+          $(".alert").hide(); // 5초 이후 알림창 숨기기
         }
         if (cnt >= 1) {
           cnt--;
