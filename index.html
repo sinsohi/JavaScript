@@ -267,6 +267,30 @@
       document.getElementById("close").addEventListener("click", function () {
         $(".black-bg").removeClass("show-modal");
       });
+
+      function add() {
+        return 123;
+      }
+      var result = add();
+      console.log(result);
+
+      //20강 숙제 Q1
+      function sec(m, s) {
+        result = (m * 60 + s) * 1000;
+        return result;
+      }
+      console.log(sec(2, 10));
+
+      //20강 숙제 Q2
+      function cal(price, bool) {
+        if (bool) {
+          return price - parseFloat((price * 0.1).toFixed(1)) - 1.5;
+        } else {
+          return price - parseFloat((price * 0.1).toFixed(1));
+        }
+      }
+      console.log(cal(70, false));
+      console.log(cal(10, true));
     </script>
   </body>
 </html>
