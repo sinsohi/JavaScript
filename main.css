@@ -37,3 +37,7 @@ body {
   padding: 100px 20px;
   background: lightgrey;
 }
+
+#login {
+  margin: 15px;
+}
