@@ -19,7 +19,7 @@
     ></script>
   </head>
 
-  <body>
+  <body class="dart">
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -106,13 +106,25 @@
         .getElementById("dark-btn")
         .addEventListener("click", function () {
           console.log(count);
-          count = count + 1;
+          count++;
           if (count % 2 == 1) {
-            document.getElementById("dark-btn").innerText = "Light";
+            document.getElementById("dark-btn").innerText = "Light 🔄";
           } else {
-            document.getElementById("dark-btn").innerText = "Dark";
+            document.getElementById("dark-btn").innerText = "Dark 🔄";
           }
         });
+
+      // 변수의 선언, 할당, 범위
+      var 이름 = "kim";
+      function 함수() {
+        var age = 20;
+        console.log(age);
+      }
+      함수();
+
+      // var let const 차이
+      let name = "신소희"; // let -> 재선언X, 재할당O
+      const age2 = 21; // const -> 재선언O, 재할당X -> 상수 저장하기 적격
     </script>
   </body>
 </html>

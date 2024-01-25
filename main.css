@@ -41,3 +41,8 @@ body {
 #login {
   margin: 15px;
 }
+
+.dart {
+  background-color: black;
+  color: white;
+}
