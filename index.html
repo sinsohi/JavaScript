@@ -341,6 +341,23 @@
       }
       console.log(cal(70, false));
       console.log(cal(10, true));
+
+      $(".black-bg").on("click", function (e) {
+        // e.target; // 유저가 실제로 누른거
+        //  e.currentTarget; // 이벤트리스너 달린 곳
+        //  this;
+        //  e.preventDefault(); // 이벤트 실행 막는거
+        //  e.stopPropagation(); // 내 상위요소로 이벤트 버블링 막아줌
+        console.log(e.target);
+        console.log(document.querySelector(".black-bg"));
+        console.log($(".black-bg"));
+
+        if (e.target == document.querySelector(".black-bg")) {
+          $(".black-bg").removeClass("show-modal");
+        } else {
+          e.stopPropagation();
+        }
+      });
     </script>
   </body>
 </html>
