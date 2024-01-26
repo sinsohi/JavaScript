@@ -20,13 +20,12 @@ function OpenTab(i) {
 }
 
 var car = ["소나타", 50000, "white"];
-var car2 = { name: "bmw", price: 50000 };
+var car2 = { name: "bmw", price: [50000, 33000, 4000] };
 car[0] = "아반떼";
 var carPrice = 50000;
 var carColor = "white";
-car2.price = 10000;
 
 console.log(car2["price"]);
 
 $("#name").html(car2.name);
-$("#price").html(car2.price);
+$("#price").html(car2.price[1]);
