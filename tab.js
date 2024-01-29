@@ -29,3 +29,39 @@ console.log(car2["price"]);
 
 $("#name").html(car2.name);
 $("#price").html(car2.price[1]);
+
+var pantsSize = `<option>28</option>
+      <option>30</option>`;
+
+var shirtSize = `<option>90</option>
+      <option>95</option>
+      <option>100</option>
+;`;
+
+document
+  .querySelectorAll(".form-select")[0]
+  .addEventListener("input", function () {
+    if ($(".form-select").eq(0).val() == "셔츠") {
+      $(".form-select").eq(1).removeClass("form-hide");
+      $(".form-select").eq(1).html(shirtSize);
+    } else if ($(".form-select").eq(0).val() == "바지") {
+      $(".form-select").eq(1).removeClass("form-hide");
+      $(".form-select").eq(1).html(pantsSize);
+    }
+  });
+
+document
+  .querySelectorAll(".form-select")[0]
+  .addEventListener("input", function () {
+    if ($(".form-select").eq(0).val() == "모자") {
+      $(".form-select").eq(1).addClass("form-hide");
+    }
+  });
+
+// var a = document.createElement("p");
+// a.innerHTML = "안녕";
+// document.querySelector("#test").appendChild(a);
+
+var 템플릿 = "<p>안녕</p>";
+// document.querySelector("#test").insertAdjacentHTML("beforeend", 템플릿);
+$("#test").append(템플릿);

@@ -109,3 +109,7 @@ ul.list::after {
 .show {
   display: block;
 }
+
+.form-hide {
+  display: none;
+}
