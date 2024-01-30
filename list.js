@@ -63,3 +63,28 @@ $("#more").click(function () {
     $("#more").html("더보기");
   }
 });
+
+var array = [7, 3, 5, 2, 40];
+var NewArray = array.map(function (a) {
+  return a * 4;
+});
+console.log(NewArray);
+
+array.sort(function (a, b) {
+  return a - b;
+});
+console.log(array);
+
+$("#price").click(function () {
+  products.sort(function (a, b) {
+    return a.price - b.price;
+  });
+  console.log(products);
+  $(".row").html("");
+
+  for (var i = 0; i < products.length; i++) {
+    $(".row").append(card);
+    $(".col-sm-4 h5").eq(i).html(products[i].title);
+    $(".col-sm-4 p").eq(i).html(products[i].price);
+  }
+});
