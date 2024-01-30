@@ -11,6 +11,7 @@ var card = `<div class="col-sm-4">
         <button class="buy">구매</button>
       </div>
 `;
+
 // console.log(products.length);
 for (var i = 0; i < products.length; i++) {
   $(".row").append(card);
@@ -125,3 +126,27 @@ var newArr = JSON.stringify(arr);
 localStorage.setItem("num", newArr);
 var 꺼낸거 = localStorage.getItem("num");
 console.log(JSON.parse(꺼낸거));
+
+// 구매 버튼 누르면 상품명을 장바구니 목록에 넣기
+$(".buy").click(function (e) {
+  var arr = [];
+  var cartList = $(e.target).siblings("h5").text(); // 누른 구매 버튼을 포함한 카드의 타이틀 변수에 저장
+  var SavedProduct = localStorage.getItem("cart"); //로컬저장소에서 cart를 key로 가지는 값을 받아옴
+
+  if (SavedProduct == null) {
+    console.log("장바구니 비어있음");
+    arr.push(cartList);
+    var newArr = JSON.stringify(arr);
+    localStorage.setItem("cart", newArr);
+  } else {
+    console.log("장바구니에 뭐 있음");
+    arr = localStorage.getItem("cart");
+    arr = JSON.parse(arr);
+    arr.push(cartList);
+    var newArr = JSON.stringify(arr);
+    localStorage.setItem("cart", newArr);
+  }
+});
+
+// 장바구니 보러가기
+$("#cart").onclick = "location.href='cart.html'";

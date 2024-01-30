@@ -113,3 +113,8 @@ ul.list::after {
 .form-hide {
   display: none;
 }
+
+.col-sm-4 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
