@@ -12,3 +12,13 @@ document.querySelectorAll("#productPrice")[1].innerHTML = products[1].price;
 
 document.querySelectorAll("#productName")[2].innerHTML = products[2].title;
 document.querySelectorAll("#productPrice")[2].innerHTML = products[2].price;
+
+$.get("https://codingapple1.github.io/price.json")
+  .done(function (data) {
+    console.log(data.price);
+  })
+  .fail(function () {
+    console.log("실패");
+  });
+
+fetch();
