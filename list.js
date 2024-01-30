@@ -18,6 +18,7 @@ for (var i = 0; i < products.length; i++) {
   $(".col-sm-4 p").eq(i).html(products[i].price);
 }
 
+// 더보기 버튼
 var clickCount = 0;
 $("#more").click(function () {
   clickCount++;
@@ -64,17 +65,7 @@ $("#more").click(function () {
   }
 });
 
-var array = [7, 3, 5, 2, 40];
-var NewArray = array.map(function (a) {
-  return a * 4;
-});
-console.log(NewArray);
-
-array.sort(function (a, b) {
-  return a - b;
-});
-console.log(array);
-
+// 가격순 정렬
 $("#price").click(function () {
   products.sort(function (a, b) {
     return a.price - b.price;
@@ -88,3 +79,41 @@ $("#price").click(function () {
     $(".col-sm-4 p").eq(i).html(products[i].price);
   }
 });
+
+// 상품 다나가순 정렬
+$("#sort").click(function () {
+  products.sort(function (a, b) {
+    if (a.title < b.title) {
+      return 1; // a -> '가', b -> '다' 일 경우 return 양수
+    } else {
+      return -1; // a -> '다', b -> '나' 일 경우 return 음수
+    }
+  });
+  console.log(products);
+  $(".row").html("");
+
+  for (var i = 0; i < products.length; i++) {
+    $(".row").append(card);
+    $(".col-sm-4 h5").eq(i).html(products[i].title);
+    $(".col-sm-4 p").eq(i).html(products[i].price);
+  }
+});
+
+// 6만원 이하 상품보기
+$("#priceFilter").click(function () {
+  var NewArray = products.filter(function (a) {
+    return a.price <= 60000;
+  });
+  console.log(NewArray);
+  $(".row").html("");
+
+  for (var i = 0; i < NewArray.length; i++) {
+    $(".row").append(card);
+    $(".col-sm-4 h5").eq(i).html(NewArray[i].title);
+    $(".col-sm-4 p").eq(i).html(NewArray[i].price);
+  }
+});
+// array.sort(function (a, b) {
+//   return a - b;
+// });
+// console.log(array);
