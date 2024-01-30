@@ -8,6 +8,7 @@ var card = `<div class="col-sm-4">
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>Card title</h5>
         <p>가격 : 70000</p>
+        <button class="buy">구매</button>
       </div>
 `;
 // console.log(products.length);
@@ -113,7 +114,14 @@ $("#priceFilter").click(function () {
     $(".col-sm-4 p").eq(i).html(NewArray[i].price);
   }
 });
-// array.sort(function (a, b) {
-//   return a - b;
-// });
-// console.log(array);
+
+localStorage.setItem("num", [1, 2, 3]);
+console.log(localStorage.getItem("이름"));
+localStorage.removeItem("이름");
+
+// localStorage에 array, object 저장하려면
+var arr = [1, 2, 3];
+var newArr = JSON.stringify(arr);
+localStorage.setItem("num", newArr);
+var 꺼낸거 = localStorage.getItem("num");
+console.log(JSON.parse(꺼낸거));
