@@ -4,21 +4,62 @@ var products = [
   { id: 2, price: 60000, title: "Black Monastery" },
 ];
 
-$("#productName").eq(0).html(products[0].title);
-$("#productPrice").eq(0).html(products[0].price);
+var card = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+      </div>
+`;
+// console.log(products.length);
+for (var i = 0; i < products.length; i++) {
+  $(".row").append(card);
 
-document.querySelectorAll("#productName")[1].innerHTML = products[1].title;
-document.querySelectorAll("#productPrice")[1].innerHTML = products[1].price;
+  $(".col-sm-4 h5").eq(i).html(products[i].title);
+  $(".col-sm-4 p").eq(i).html(products[i].price);
+}
 
-document.querySelectorAll("#productName")[2].innerHTML = products[2].title;
-document.querySelectorAll("#productPrice")[2].innerHTML = products[2].price;
-
-$.get("https://codingapple1.github.io/price.json")
-  .done(function (data) {
-    console.log(data.price);
-  })
-  .fail(function () {
-    console.log("실패");
-  });
-
-fetch();
+var clickCount = 0;
+$("#more").click(function () {
+  clickCount++;
+  if (clickCount == 1) {
+    $.get("https://codingapple1.github.io/js/more1.json").done((data) => {
+      // console.log(data);
+      // console.log(data.length);
+      for (var i = 0; i < data.length; i++) {
+        $(".row").append(card);
+        //  console.log(data[i].title);
+        $(".col-sm-4 h5")
+          .eq(products.length + i)
+          .html(data[i].title);
+        $(".col-sm-4 p")
+          .eq(products.length + i)
+          .html(data[i].price);
+      }
+      products.length += data.length;
+    });
+  } else if (clickCount == 2) {
+    $.get("https://codingapple1.github.io/js/more2.json").done((data) => {
+      for (var i = 0; i < data.length; i++) {
+        $(".row").append(card);
+        $(".col-sm-4 h5")
+          .eq(products.length + i)
+          .html(data[i].title);
+        $(".col-sm-4 p")
+          .eq(products.length + i)
+          .html(data[i].price);
+      }
+      products.length += data.length;
+      $("#more").html("닫기");
+    });
+  } else if (clickCount == 3) {
+    clickCount = 0;
+    products.length = 3;
+    $(".row").html("");
+    for (var i = 0; i < products.length; i++) {
+      $(".row").append(card);
+      $(".col-sm-4 h5").eq(i).html(products[i].title);
+      $(".col-sm-4 p").eq(i).html(products[i].price);
+    }
+    $("#more").html("더보기");
+  }
+});
