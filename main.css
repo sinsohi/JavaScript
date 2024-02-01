@@ -118,3 +118,22 @@ ul.list::after {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+.card-background {
+  height: 3000px;
+  margin-top: 400px;
+  margin-bottom: 1600px;
+}
+
+.card-box img {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+}
+
+.card-box {
+  position: sticky;
+  top: 200px;
+  margin-top: 400px;
+  transition: all 0.2s;
+}
