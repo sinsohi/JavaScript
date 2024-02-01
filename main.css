@@ -51,7 +51,7 @@ body {
 .slide-container {
   width: 300vw;
   margin-top: 30px;
-  /* transition: all 1s; */
+  transition: all 1s;
 }
 
 .slide-box {

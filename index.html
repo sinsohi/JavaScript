@@ -388,6 +388,13 @@
         .on("mouseup", function (e) {
           console.log("마우스로 뗌");
           눌렀냐 = false;
+          if (`${e.clientX - 시작좌표}` <= -100) {
+            $(".slide-container").css("transform", "translateX(-100vw)");
+            지금사진 = 2;
+          } else {
+            $(".slide-container").css("transform", "translateX(0vw)");
+            지금사진 = 1;
+          }
         });
     </script>
   </body>
